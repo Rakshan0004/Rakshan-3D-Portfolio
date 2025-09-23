@@ -1,4 +1,4 @@
-Rakshan CH — 3D Portfolio
+Rakshan CH — 3D Portfolio  
 
 A clean, interactive developer portfolio highlighting my work, skills, and experience.
 
@@ -15,7 +15,7 @@ Tech Stack
 
 
 Live Demo
-- Portfolio: `https://portfolio-rakshan.vercel.app/`
+- Portfolio: `https://rakshan-3-d-portfolio.vercel.app/`
 
 Getting Started
 1) Install dependencies: `npm install`
