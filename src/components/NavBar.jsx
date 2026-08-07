@@ -1,55 +1,98 @@
 import { useState, useEffect } from "react";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { navLinks } from "../constants";
 
 const NavBar = () => {
-  // track if the user has scrolled down the page
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
-    // Throttle scroll event for better performance
     let ticking = false;
-    
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const isScrolled = window.scrollY > 10;
-          setScrolled(isScrolled);
+          setScrolled(window.scrollY > 10);
           ticking = false;
         });
         ticking = true;
       }
     };
-
-    // Use passive event listener for better scroll performance
     window.addEventListener("scroll", handleScroll, { passive: true });
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (e, link) => {
+    e.preventDefault();
+    const targetId = link.replace("#", "");
+
+    if (isHomePage) {
+      // Already on homepage — just scroll
+      const target = document.getElementById(targetId);
+      if (target) {
+        const offset = window.innerHeight * 0.15;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    } else {
+      // Navigate to home, then scroll after mount
+      navigate("/");
+      setTimeout(() => {
+        const target = document.getElementById(targetId);
+        if (target) {
+          const offset = window.innerHeight * 0.15;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }, 400);
+    }
+  };
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    if (isHomePage) {
+      const target = document.getElementById("contact");
+      if (target) {
+        const offset = window.innerHeight * 0.15;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        const target = document.getElementById("contact");
+        if (target) {
+          const offset = window.innerHeight * 0.15;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }, 400);
+    }
+  };
 
   return (
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
-        <a href="#hero" className="logo">
+        <a
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="logo"
+        >
           Rakshan CH
         </a>
 
         <nav className="desktop">
           <ul>
-          {navLinks.map(({ link, name }) => (
+            {navLinks.map(({ link, name }) => (
               <li key={name} className="group">
-                <a 
-                  href={link} 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const targetId = link.replace('#', '');
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                      const offset = window.innerHeight * 0.15;
-                      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                      window.scrollTo({ top, behavior: "smooth" });
-                    }
-                  }}
+                <a
+                  href={link}
+                  onClick={(e) => handleNavClick(e, link)}
                   className="flex items-center gap-1.5"
                 >
                   {name === "Live" && (
@@ -66,17 +109,9 @@ const NavBar = () => {
           </ul>
         </nav>
 
-        <a 
-          href="#contact" 
-          onClick={(e) => {
-            e.preventDefault();
-            const target = document.getElementById("contact");
-            if (target) {
-              const offset = window.innerHeight * 0.15;
-              const top = target.getBoundingClientRect().top + window.scrollY - offset;
-              window.scrollTo({ top, behavior: "smooth" });
-            }
-          }}
+        <a
+          href="#contact"
+          onClick={handleContactClick}
           className="contact-btn group"
         >
           <div className="inner">
@@ -86,6 +121,6 @@ const NavBar = () => {
       </div>
     </header>
   );
-}
+};
 
 export default NavBar;

@@ -867,6 +867,166 @@ section {
 }
 
 /* ============================================================
+   Projects Built section — full-viewport + animated orb background
+   ============================================================ */
+.projects-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 100dvh;
+}
+
+.projects-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.projects-grid-bg {
+  position: absolute;
+  inset: -60%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(circle at center, #000 0%, transparent 65%);
+  mask-image: radial-gradient(circle at center, #000 0%, transparent 65%);
+  animation: projectsGridDrift 32s linear infinite;
+  will-change: transform;
+}
+
+@keyframes projectsGridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(48px, 48px); }
+}
+
+.projects-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.projects-orb-1 {
+  width: 420px; height: 420px;
+  top: -100px; left: -80px;
+  background: radial-gradient(circle at 30% 30%, #4f46e5 0%, transparent 70%);
+  animation: projectsOrb1 22s ease-in-out infinite;
+}
+
+.projects-orb-2 {
+  width: 360px; height: 360px;
+  bottom: -120px; right: -60px;
+  background: radial-gradient(circle at 30% 30%, #7c3aed 0%, transparent 70%);
+  animation: projectsOrb2 26s ease-in-out infinite;
+}
+
+.projects-orb-3 {
+  width: 280px; height: 280px;
+  top: 45%; left: 52%;
+  background: radial-gradient(circle at 30% 30%, #2563eb 0%, transparent 70%);
+  animation: projectsOrb3 30s ease-in-out infinite;
+}
+
+@keyframes projectsOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(80px, 60px) scale(1.1); }
+  66%       { transform: translate(30px, 100px) scale(0.9); }
+}
+@keyframes projectsOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-70px, -50px) scale(0.9); }
+  66%       { transform: translate(-100px, 40px) scale(1.1); }
+}
+@keyframes projectsOrb3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-90px, -70px) scale(1.15); }
+}
+
+/* ============================================================
+   Live Projects section — full-viewport + emerald orb background
+   ============================================================ */
+.live-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 100dvh;
+}
+
+.live-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.live-grid-bg {
+  position: absolute;
+  inset: -60%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(circle at center, #000 0%, transparent 65%);
+  mask-image: radial-gradient(circle at center, #000 0%, transparent 65%);
+  animation: liveGridDrift 32s linear infinite;
+  will-change: transform;
+}
+
+@keyframes liveGridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(48px, 48px); }
+}
+
+.live-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.live-orb-1 {
+  width: 420px; height: 420px;
+  top: -100px; right: -80px;
+  background: radial-gradient(circle at 30% 30%, #059669 0%, transparent 70%);
+  animation: liveOrb1 22s ease-in-out infinite;
+}
+
+.live-orb-2 {
+  width: 360px; height: 360px;
+  bottom: -120px; left: -60px;
+  background: radial-gradient(circle at 30% 30%, #0284c7 0%, transparent 70%);
+  animation: liveOrb2 26s ease-in-out infinite;
+}
+
+.live-orb-3 {
+  width: 280px; height: 280px;
+  top: 40%; left: 45%;
+  background: radial-gradient(circle at 30% 30%, #10b981 0%, transparent 70%);
+  animation: liveOrb3 30s ease-in-out infinite;
+}
+
+@keyframes liveOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-80px, 60px) scale(1.1); }
+  66%       { transform: translate(-30px, 100px) scale(0.9); }
+}
+@keyframes liveOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(70px, -50px) scale(0.9); }
+  66%       { transform: translate(100px, 40px) scale(1.1); }
+}
+@keyframes liveOrb3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(90px, -70px) scale(1.15); }
+}
+
+/* ============================================================
    Links / Social section — scoped animated background + reveal
    ============================================================ */
 #links {

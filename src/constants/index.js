@@ -16,10 +16,6 @@ const navLinks = [
     link: "#skills",
   },
   {
-    name: "Testimonials",
-    link: "#testimonials",
-  },
-  {
     name: "Links",
     link: "#links",
   },
@@ -83,7 +79,7 @@ const abilities = [
   {
     imgPath: "/images/seo.png",
     title: "Full Stack Development",
-    desc: "Expertise in Java, Spring Boot, React.js, and modern web technologies for end-to-end solutions.",
+    desc: "Expertise in Java, Spring Boot, MERN stack, AWS, and modern web technologies for scalable end-to-end solutions.",
   },
   {
     imgPath: "/images/chat.png",
@@ -346,7 +342,7 @@ const educationData = [
 const projects = [
   {
     id: "logistics-platform",
-    title: "Logistics Platform",
+    title: "Logistics Platform — Multi-Courier Logistics Aggregator",
     description:
       "A robust multi-courier logistics aggregator for merchants. Features asynchronous parallel rate aggregation via Spring WebFlux, idempotent webhook processing, and a React SPA dashboard.",
     image: "/images/logistics.png",
@@ -354,6 +350,35 @@ const projects = [
     githubUrl: "https://github.com/Rakshan0004/ShipFlow_A_Logistics_Platform",
     demoUrl: "https://ship-flow-a-logistics-platform.vercel.app/merchant/dashboard",
     featured: false,
+    type: "personal",
+    details: {
+      overview:
+        "This project is a production-grade multi-courier logistics aggregator platform. It acts as a unified gateway for merchants to streamline shipping rate aggregation, select carriers, book shipments, and process real-time tracking webhooks across multiple distinct courier APIs (FastShip, QuickExpress, and ReliableCourier).",
+      highlights: [
+        "Implemented non-blocking, parallel rate aggregation from multiple third-party courier mock APIs using Spring WebFlux WebClient with a 5-second hard timeout and partial failure tolerance",
+        "Designed a robust PostgreSQL schema using Flyway for versioned database migrations with idempotent webhook ingestion using partial unique constraints",
+        "Built a two-step transaction flow to guarantee carrier selection and freeze pricing, preventing price tampering via PriceMismatchException",
+        "Implemented a state machine guardrail system to prevent illegal status regressions (e.g., rejecting an update from DELIVERED back to IN_TRANSIT)",
+        "Built a webhook processing engine that normalizes fragmented tracking payloads from three distinct couriers into a unified 7-step internal tracking state",
+        "Developed a Merchant Dashboard SPA using React and Vite, featuring a premium glassmorphism dark UI with live rate comparison tables and real-time visual tracking timeline",
+        "Fully containerized the microservices architecture using Docker Compose with a dedicated bridge network for secure service isolation",
+        "Authored highly optimized multi-stage Dockerfiles (Node builder + Nginx runtime) to reduce image sizes and leverage Docker layer caching",
+        "Configured Nginx as a reverse proxy with production-grade security headers (X-Frame-Options, X-XSS-Protection) and Gzip compression",
+        "Designed the architecture for native AWS deployment — ECS/EKS for backend, RDS for PostgreSQL, S3 + CloudFront for frontend",
+      ],
+      techCategories: {
+        "Backend": ["Java 21", "Spring Boot 3.3.0", "Spring WebFlux", "Spring Data JPA", "Flyway"],
+        "Frontend": ["React 18", "Vite 5", "Node.js", "Vanilla CSS"],
+        "Database": ["PostgreSQL"],
+        "DevOps": ["Docker", "Docker Compose", "Nginx", "Multi-Stage Builds"],
+        "AWS Ready": ["ECS/EKS", "RDS", "S3 + CloudFront", "EC2"],
+      },
+      architectureHighlights: [
+        "Fault Tolerance: Built to survive third-party API outages during the rate aggregation phase",
+        "Idempotent Event Driven Architecture: Webhooks are safely retriable without duplicating database records or corrupting shipment states",
+        "Microservices Simulation: Ran a separate mock-courier-service container to simulate third-party API latency and webhook triggers",
+      ],
+    },
   },
   {
     id: "ecommerce",
@@ -365,6 +390,24 @@ const projects = [
     githubUrl: "https://github.com/Rakshan0004",
     demoUrl: null,
     featured: false,
+    type: "personal",
+    details: {
+      overview:
+        "A fully functional e-commerce backend platform built with Java 17 and Spring Boot 3.3.3. The application features a complete product catalog with category management, user authentication and authorization, shopping cart management, order processing workflow, and payment gateway integration.",
+      highlights: [
+        "Implemented RESTful API endpoints for product CRUD, cart management, and order processing",
+        "Built user authentication and authorization with role-based access control (admin, customer)",
+        "Designed a normalized MySQL database schema with Flyway for versioned, repeatable migrations",
+        "Integrated payment gateway for secure checkout and transaction handling",
+        "Implemented pagination, sorting, and filtering for product catalog browsing",
+        "Built order lifecycle management with status tracking from placement to delivery",
+      ],
+      techCategories: {
+        "Backend": ["Java 17", "Spring Boot 3.3.3", "Spring Security", "Spring Data JPA"],
+        "Database": ["MySQL", "Flyway Migrations"],
+        "API": ["REST API", "Postman"],
+      },
+    },
   },
   {
     id: "echo-arena",
@@ -376,6 +419,26 @@ const projects = [
     githubUrl: "https://github.com/Rakshan0004",
     demoUrl: "https://echo-arena-game.vercel.app/",
     featured: false,
+    type: "personal",
+    details: {
+      overview:
+        "Echo Arena is a high-performance 2D time loop platformer game built from scratch using only Vanilla JavaScript and HTML5 Canvas — no game engine or framework used. It demonstrates deep understanding of game loop architecture, physics simulation, collision detection, and state management in the browser.",
+      highlights: [
+        "Custom game loop running at a locked 60FPS with delta-time interpolation for consistent physics across devices",
+        "Built a from-scratch physics engine with gravity, friction, velocity-based movement, and AABB collision detection",
+        "Implemented a finite state machine for character states (idle, running, jumping, falling, dashing)",
+        "Custom input manager supporting keyboard controls with input buffering for responsive gameplay",
+        "Level design system with tile-based maps and procedural obstacle placement",
+        "Responsive CSS3 UI overlays for menus, HUD, and game-over screens that scale to any viewport",
+        "Deployed on Vercel with optimized asset loading and zero-dependency architecture",
+      ],
+      techCategories: {
+        "Core": ["Vanilla JavaScript (ES6+)", "HTML5 Canvas API"],
+        "Game Systems": ["Custom Physics Engine", "State Machine", "Input Manager", "Collision Detection"],
+        "Frontend": ["CSS3", "Responsive UI Overlays"],
+        "Deployment": ["Vercel"],
+      },
+    },
   },
   {
     id: "blockvote",
@@ -387,6 +450,23 @@ const projects = [
     githubUrl: "https://github.com/Rakshan0004",
     demoUrl: null,
     featured: false,
+    type: "personal",
+    details: {
+      overview:
+        "BlockVote is a decentralized voting application built on blockchain technology to ensure transparent, tamper-proof elections. It uses Ethereum smart contracts to guarantee vote integrity while providing an intuitive React frontend that abstracts away the complexity of blockchain interactions.",
+      highlights: [
+        "Wrote Solidity smart contracts for election creation, candidate registration, and vote casting with built-in safeguards against double-voting",
+        "Integrated Web3.js for seamless communication between the React frontend and the Ethereum blockchain",
+        "Built a modern React UI with real-time vote tallying and election result visualization",
+        "Implemented MetaMask wallet connection for voter authentication without centralized credentials",
+        "Designed the contract architecture to be gas-efficient while maintaining election integrity guarantees",
+      ],
+      techCategories: {
+        "Blockchain": ["Solidity", "Ethereum", "Web3.js", "MetaMask"],
+        "Frontend": ["React", "JavaScript"],
+        "Tools": ["Truffle/Hardhat", "Ganache"],
+      },
+    },
   },
   {
     id: "ai-agent",
@@ -398,6 +478,25 @@ const projects = [
     githubUrl: "https://github.com/Rakshan0004",
     demoUrl: null,
     featured: false,
+    type: "personal",
+    details: {
+      overview:
+        "A customizable AI agent built with LangChain that supports Retrieval-Augmented Generation (RAG) and tool-use capabilities. The agent connects to a Pinecone vector database to provide context-aware responses grounded in custom document sets, making it adaptable for domain-specific applications like customer support, documentation search, and internal knowledge bases.",
+      highlights: [
+        "Built a RAG pipeline using LangChain with document ingestion, chunking, embedding, and retrieval stages",
+        "Integrated Pinecone as the vector store for fast, scalable semantic search across large document sets",
+        "Implemented tool-use capabilities allowing the agent to perform structured actions beyond text generation",
+        "Created a FastAPI backend exposing the agent as a REST API with streaming response support",
+        "Designed a modular architecture allowing easy swapping of LLM providers, embedding models, and vector stores",
+        "Built document preprocessing pipelines supporting PDF, text, and markdown ingestion formats",
+      ],
+      techCategories: {
+        "AI/ML": ["LangChain", "RAG Pipeline", "OpenAI/Claude API", "Embeddings"],
+        "Backend": ["Python", "FastAPI"],
+        "Database": ["Pinecone Vector DB"],
+        "Tools": ["Document Processing", "Semantic Search"],
+      },
+    },
   },
   {
     id: "immigration",
@@ -409,6 +508,26 @@ const projects = [
     githubUrl: "https://github.com/Rakshan0004",
     demoUrl: null,
     featured: false,
+    type: "company",
+    details: {
+      overview:
+        "A production-ready web application built for Qontact, a global immigration consulting firm. Developed from Figma designs using Next.js 15 with multiple backend services (Spring Boot, Express.js, FastAPI), featuring an AI-powered chatbot for immigration queries and an automated data scraping pipeline.",
+      highlights: [
+        "Built a RAG-based AI chatbot using Claude/OpenAI APIs and Pinecone vector database, cutting average support query resolution time by 60%",
+        "Developed 10+ REST API endpoints using FastAPI with average response times under 200ms",
+        "Built an automated web scraping pipeline using Selenium and BeautifulSoup to extract and normalize data from 15+ websites",
+        "Developed a responsive web application from Figma designs using Next.js 15 with cross-browser consistency",
+        "Integrated third-party APIs and webhooks for real-time event handling",
+        "Built data transformation pipelines to convert scraped content into standardized JSON supporting 3 downstream services",
+      ],
+      techCategories: {
+        "Frontend": ["Next.js 15", "React"],
+        "Backend": ["Spring Boot", "Express.js", "FastAPI"],
+        "AI": ["Claude API", "OpenAI API", "RAG", "Pinecone"],
+        "Automation": ["Selenium", "BeautifulSoup"],
+        "DevOps": ["Docker", "AWS S3"],
+      },
+    },
   },
   {
     id: "kmpleet-survey",
@@ -420,6 +539,26 @@ const projects = [
     githubUrl: "https://github.com/Rakshan0004",
     demoUrl: "https://kmpleet.com/",
     featured: false,
+    type: "company",
+    details: {
+      overview:
+        "Kmpleet is a full-stack SaaS platform for data collection, survey management, and real-time analytics. It features a dynamic survey builder, real-time response analytics dashboard, and AI-powered chatbot assistance for users. Built production-ready with Next.js 15 on the frontend and FastAPI on the backend.",
+      highlights: [
+        "Built a dynamic survey builder with drag-and-drop question types, conditional logic, and multi-page support",
+        "Developed a real-time analytics dashboard with live response tracking, charts, and exportable reports",
+        "Integrated an AI-powered chatbot to assist users with survey creation and data interpretation",
+        "Implemented user authentication with role-based access for survey creators and respondents",
+        "Built a PostgreSQL-backed data layer with optimized queries for aggregation and analytics",
+        "Deployed on Vercel with CI/CD pipeline for seamless production updates",
+      ],
+      techCategories: {
+        "Frontend": ["Next.js 15", "React"],
+        "Backend": ["FastAPI", "Python"],
+        "Database": ["PostgreSQL"],
+        "AI": ["Chatbot", "NLP"],
+        "Deployment": ["Vercel", "CI/CD"],
+      },
+    },
   },
 ];
 
@@ -437,6 +576,26 @@ const liveProjects = [
       { label: "GitHub", url: "https://github.com/Rakshan0004/ShipFlow_A_Logistics_Platform", icon: "globe" },
     ],
     featured: false,
+    projectRef: "logistics-platform",
+    type: "personal",
+    details: {
+      overview:
+        "A production-grade multi-courier logistics aggregator platform that acts as a unified gateway for merchants to streamline shipping rate aggregation, select carriers, book shipments, and process real-time tracking webhooks across multiple distinct courier APIs.",
+      highlights: [
+        "Non-blocking, parallel rate aggregation from multiple courier APIs with 5-second hard timeout and partial failure tolerance",
+        "Idempotent webhook processing using partial unique constraints to handle duplicate tracking events",
+        "Two-step transaction flow with frozen pricing to prevent price tampering",
+        "State machine guardrail system preventing illegal status regressions",
+        "Merchant Dashboard SPA with glassmorphism dark UI, live rate comparison, and real-time tracking timeline",
+        "Fully containerized with Docker Compose, Nginx reverse proxy, and multi-stage builds",
+      ],
+      techCategories: {
+        "Backend": ["Java 21", "Spring Boot 3.3.0", "Spring WebFlux"],
+        "Frontend": ["React 18", "Vite 5"],
+        "Database": ["PostgreSQL", "Flyway"],
+        "DevOps": ["Docker", "Nginx", "AWS Ready"],
+      },
+    },
   },
   {
     id: "echo-arena",
@@ -450,6 +609,22 @@ const liveProjects = [
       { label: "Play Game", url: "https://echo-arena-game.vercel.app/", icon: "globe" },
     ],
     featured: false,
+    projectRef: "echo-arena",
+    type: "personal",
+    details: {
+      overview:
+        "A high-performance 2D time loop platformer built from scratch with Vanilla JavaScript and HTML5 Canvas. No game engine or framework used — demonstrating deep understanding of game loop architecture, physics, and state management.",
+      highlights: [
+        "Custom game loop locked at 60FPS with delta-time interpolation",
+        "From-scratch physics engine with gravity, friction, and AABB collision detection",
+        "Finite state machine for character states and game flow",
+        "Zero-dependency architecture deployed on Vercel",
+      ],
+      techCategories: {
+        "Core": ["Vanilla JavaScript", "HTML5 Canvas"],
+        "Game Systems": ["Physics Engine", "State Machine"],
+      },
+    },
   },
   {
     id: "kmpleet",
@@ -468,6 +643,23 @@ const liveProjects = [
       },
     ],
     featured: false,
+    projectRef: "kmpleet-survey",
+    type: "company",
+    details: {
+      overview:
+        "A production SaaS platform for data collection, survey management, and real-time analytics with a dynamic survey builder and AI-powered chatbot.",
+      highlights: [
+        "Dynamic survey builder with drag-and-drop and conditional logic",
+        "Real-time analytics dashboard with live response tracking",
+        "AI-powered chatbot for survey creation assistance",
+        "Role-based access control for creators and respondents",
+      ],
+      techCategories: {
+        "Frontend": ["Next.js 15", "React"],
+        "Backend": ["FastAPI", "Python"],
+        "Database": ["PostgreSQL"],
+      },
+    },
   },
   {
     id: "plutorides",
@@ -492,6 +684,24 @@ const liveProjects = [
       },
     ],
     featured: false,
+    type: "company",
+    details: {
+      overview:
+        "End-to-end ride mobility ecosystem including cross-platform mobile apps (iOS & Android), admin dashboard, serverless backend, and marketing website. Built at Pluto Rides as a Software Engineer.",
+      highlights: [
+        "Built 30+ serverless REST endpoints on AWS Lambda and API Gateway",
+        "Developed cross-platform mobile screens using Kotlin Multiplatform (KMP) and Compose Multiplatform",
+        "Added real-time GPS tracking and Firebase Cloud Messaging push notifications",
+        "Implemented RBAC across 3 user roles (customer, driver, admin)",
+        "Set up CI/CD pipelines for same-day hotfix releases",
+      ],
+      techCategories: {
+        "Mobile": ["Kotlin Multiplatform", "Compose Multiplatform"],
+        "Backend": ["AWS Lambda", "API Gateway", "Spring Boot"],
+        "Database": ["PostgreSQL", "Firebase"],
+        "DevOps": ["CI/CD", "FCM"],
+      },
+    },
   },
   {
     id: "letxt",
@@ -505,6 +715,22 @@ const liveProjects = [
       { label: "Live Site", url: "https://letxenterprises.com/", icon: "globe" },
     ],
     featured: false,
+    type: "client",
+    details: {
+      overview:
+        "A high-performance, responsive corporate landing page built for LetXT Enterprises as a freelance project. Optimized for SEO, cross-device experience, and deployed on Vercel with CI/CD.",
+      highlights: [
+        "Built a responsive, mobile-first corporate landing page from client requirements",
+        "Optimized SEO with proper meta tags, structured data, and performance tuning",
+        "Deployed on Vercel with CI/CD pipeline for seamless updates",
+        "Cross-browser and cross-device testing for consistent experience",
+      ],
+      techCategories: {
+        "Frontend": ["React.js", "CSS3"],
+        "Deployment": ["Vercel", "CI/CD"],
+        "Optimization": ["SEO", "Performance"],
+      },
+    },
   },
 ];
 

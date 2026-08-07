@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBar";
 
 // Eager load critical components
@@ -12,11 +13,16 @@ const LiveProjects = lazy(() => import("./sections/LiveProjects"));
 const LogoShowcase = lazy(() => import("./sections/LogoShowcase"));
 const TechStack = lazy(() => import("./sections/TechStack"));
 const Education = lazy(() => import("./sections/Education"));
-const Testimonials = lazy(() => import("./sections/Testimonials"));
 const SocialLinks = lazy(() => import("./sections/SocialLinks"));
 const Contact = lazy(() => import("./sections/Contact"));
 const FAQ = lazy(() => import("./sections/FAQ"));
 const Footer = lazy(() => import("./sections/Footer"));
+
+// Lazy load pages
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const ProjectDetailPage = lazy(() => import("./pages/ProjectDetailPage"));
+const LiveProjectsPage = lazy(() => import("./pages/LiveProjectsPage"));
+const LiveProjectDetailPage = lazy(() => import("./pages/LiveProjectDetailPage"));
 
 // Simple loading component
 const SectionLoader = () => (
@@ -25,10 +31,8 @@ const SectionLoader = () => (
   </div>
 );
 
-const App = () => (
+const HomePage = () => (
   <>
-    <Navbar />
-
     {/* 1. Hero — first impression */}
     <Hero />
 
@@ -67,11 +71,6 @@ const App = () => (
       <Education />
     </Suspense>
 
-    {/* 9. Testimonials — final social proof before CTA */}
-    <Suspense fallback={<SectionLoader />}>
-      <Testimonials />
-    </Suspense>
-
     {/* 10. Links — dedicated social links section */}
     <Suspense fallback={<SectionLoader />}>
       <SocialLinks />
@@ -90,6 +89,47 @@ const App = () => (
     <Suspense fallback={<SectionLoader />}>
       <Footer />
     </Suspense>
+  </>
+);
+
+const App = () => (
+  <>
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route
+        path="/projects"
+        element={
+          <Suspense fallback={<SectionLoader />}>
+            <ProjectsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/projects/:id"
+        element={
+          <Suspense fallback={<SectionLoader />}>
+            <ProjectDetailPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/live"
+        element={
+          <Suspense fallback={<SectionLoader />}>
+            <LiveProjectsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/live/:id"
+        element={
+          <Suspense fallback={<SectionLoader />}>
+            <LiveProjectDetailPage />
+          </Suspense>
+        }
+      />
+    </Routes>
   </>
 );
 
