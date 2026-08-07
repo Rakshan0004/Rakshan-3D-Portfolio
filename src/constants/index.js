@@ -345,6 +345,17 @@ const educationData = [
 
 const projects = [
   {
+    id: "logistics-platform",
+    title: "Logistics Platform",
+    description:
+      "A robust multi-courier logistics aggregator for merchants. Features asynchronous parallel rate aggregation via Spring WebFlux, idempotent webhook processing, and a React SPA dashboard.",
+    image: "/images/logistics.png",
+    tags: ["Java 21", "Spring WebFlux", "React", "PostgreSQL", "Docker"],
+    githubUrl: "https://github.com/Rakshan0004/ShipFlow_A_Logistics_Platform",
+    demoUrl: "https://ship-flow-a-logistics-platform.vercel.app/merchant/dashboard",
+    featured: false,
+  },
+  {
     id: "ecommerce",
     title: "Full-Stack E-Commerce Platform",
     description:
@@ -413,6 +424,20 @@ const projects = [
 ];
 
 const liveProjects = [
+  {
+    id: "logistics-platform",
+    title: "Logistics Platform",
+    tagline: "Multi-Courier Logistics Aggregator",
+    description:
+      "A production-grade logistics gateway for shipping rate aggregation and booking. Built with a highly concurrent Spring WebFlux backend and an interactive React/Vite dashboard.",
+    image: "/images/logistics.png",
+    tags: ["Spring Boot", "React", "PostgreSQL", "Docker", "AWS Ready"],
+    links: [
+      { label: "Live Dashboard", url: "https://ship-flow-a-logistics-platform.vercel.app/merchant/dashboard", icon: "globe" },
+      { label: "GitHub", url: "https://github.com/Rakshan0004/ShipFlow_A_Logistics_Platform", icon: "globe" },
+    ],
+    featured: false,
+  },
   {
     id: "echo-arena",
     title: "Echo Arena",
