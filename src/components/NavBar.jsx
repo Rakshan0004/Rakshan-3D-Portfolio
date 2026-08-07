@@ -72,8 +72,8 @@ const NavBar = () => {
   };
 
   return (
-    <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
-      <div className="inner">
+    <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"} pointer-events-none`}>
+      <div className="inner pointer-events-auto">
         <a
           href="/"
           onClick={(e) => {

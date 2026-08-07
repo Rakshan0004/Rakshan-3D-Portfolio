@@ -127,13 +127,13 @@ const LiveProjectDetailPage = () => {
   const badge = typeBadge[project.type] || typeBadge.personal;
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-20">
+    <div className="min-h-screen bg-black pt-32 md:pt-36 pb-20 relative z-10">
       {/* Back Navigation */}
-      <div className="max-w-6xl mx-auto px-5 md:px-10 mb-8 flex items-center gap-3 text-sm text-white/50">
+      <div className="max-w-6xl mx-auto px-5 md:px-10 mb-8 flex items-center gap-3 text-sm text-white/50 relative z-30">
         <Link
           to="/"
           onClick={() => window.scrollTo(0, 0)}
-          className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-300 group"
+          className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-300 group cursor-pointer py-1 px-2 -ml-2 rounded-lg hover:bg-white/5"
         >
           <span className="group-hover:-translate-x-0.5 transition-transform duration-300"><BackArrow /></span>
           <span className="font-medium">Back to Home</span>
@@ -142,7 +142,7 @@ const LiveProjectDetailPage = () => {
         <Link
           to="/live"
           onClick={() => window.scrollTo(0, 0)}
-          className="hover:text-white transition-colors duration-300 font-medium"
+          className="hover:text-white transition-colors duration-300 font-medium cursor-pointer py-1 px-2 rounded-lg hover:bg-white/5"
         >
           Back to Live Projects
         </Link>

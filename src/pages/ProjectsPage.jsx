@@ -166,14 +166,14 @@ const ProjectsPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-20">
+    <div className="min-h-screen bg-black pt-32 md:pt-36 pb-20 relative z-10">
       <div className="max-w-7xl mx-auto px-5 md:px-10">
         {/* Back nav */}
-        <div className="mb-8">
+        <div className="mb-8 relative z-30">
           <Link
             to="/"
             onClick={() => window.scrollTo(0, 0)}
-            className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-300 group"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-300 group cursor-pointer py-1 px-2 -ml-2 rounded-lg hover:bg-white/5"
           >
             <span className="group-hover:-translate-x-1 transition-transform duration-300">
               <BackArrow />
