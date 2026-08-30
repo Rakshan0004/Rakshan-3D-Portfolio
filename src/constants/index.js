@@ -151,16 +151,33 @@ const techStackIcons = [
 
 const expCards = [
   {
-    review: "As a freelance developer, I delivered a working prototype for Hyacinte AI — a bilingual RAG-powered executive intelligence platform for the ECOWAS region — in just 2 months, featuring multi-tenant security and async document processing.",
+    review: "At PunkRaven, I work as a full stack developer building AI orchestration systems and AI agents, alongside a React Native app for lawyers, Next.js marketing/product websites, and end-to-end AWS deployments and CI/CD pipelines.",
+    imgPath: "/images/exp1.png",
+    logoPath: "/images/logo1.png",
+    title: "Full Stack Developer",
+    company: "PunkRaven",
+    date: "Jul 2026 – Present",
+    location: "Remote",
+    techStack: ["AI Orchestration", "AI Agents", "React Native", "Next.js", "AWS", "CI/CD"],
+    responsibilities: [
+      "Building AI orchestration systems and AI agents as core product features",
+      "Developing a React Native mobile app for lawyers, covering both frontend and backend integration",
+      "Building product and marketing websites using Next.js",
+      "Owning AWS deployments end-to-end, from infrastructure setup through production release",
+      "Setting up and maintaining CI/CD pipelines end-to-end across the applications shipped",
+    ],
+  },
+  {
+    review: "As a freelance developer, I delivered a working prototype for Hyacinte AI — a bilingual RAG-powered executive intelligence platform for the ECOWAS region — in just 3 months, featuring multi-tenant security and async document processing.",
     imgPath: "/images/exp1.png",
     logoPath: "/images/logo1.png",
     title: "Freelance Full Stack Developer",
     company: "Hyacinte AI",
-    date: "May 2026 – Jun 2026",
+    date: "Apr 2026 – Jun 2026",
     location: "Remote (Ghana Client)",
     techStack: ["Python", "FastAPI", "PostgreSQL", "Qdrant", "Redis", "Dramatiq", "AWS Bedrock", "JWT", "SQLAlchemy 2.0", "Docker", "Git"],
     responsibilities: [
-      "Delivered a functional backend prototype for a bilingual (English/French) AI executive intelligence platform targeting the ECOWAS region within a tight 2-month freelance engagement",
+      "Delivered a functional backend prototype for a bilingual (English/French) AI executive intelligence platform targeting the ECOWAS region within a tight 3-month freelance engagement",
       "Implemented a RAG pipeline using Qdrant as the vector database with tenant-scoped payload filtering, and AWS Bedrock (Mistral Large 2) as the LLM provider — chosen specifically to keep all client data within AWS infrastructure and avoid sending sensitive documents to external APIs like OpenAI or Claude",
       "Implemented a shared-schema multi-tenancy model in PostgreSQL with strict org_id isolation and RBAC middleware to prevent unauthorized cross-organization data access",
       "Set up asynchronous background task processing using Redis and Dramatiq for OCR, PDF ingestion, and semantic chunking workflows",
@@ -340,6 +357,48 @@ const educationData = [
 ];
 
 const projects = [
+  {
+    id: "chitransit",
+    title: "ChiTransit — Chicago 'L' Transit App",
+    description:
+      "A Chicago 'L' transit app with a live train map, real-time arrivals, and a smart trip planner — backed by a Spring Boot API built around CTA's data limits.",
+    image: "/images/chitransit-map.png",
+    screenshots: [
+      "/images/chitransit-map.png",
+      "/images/chitransit-train-detail.png",
+      "/images/chitransit-arrivals.png",
+    ],
+    tags: ["Spring Boot", "React Native", "Expo", "PostgreSQL", "RAPTOR Routing", "MapLibre", "ArchUnit", "Docker"],
+    githubUrl: "https://github.com/Rakshan0004",
+    demoUrl: null,
+    featured: false,
+    type: "personal",
+    details: {
+      overview:
+        "ChiTransit is a full-stack Chicago 'L' transit app: a Spring Boot backend that caches and cleans up CTA's live train data, and an Expo/React Native app with a live map, real-time arrivals, and a trip planner. Built solo in 4 weeks — 167 commits, ~24,000 lines of code, 800+ tests. Feature-complete and tested on Android; not yet publicly deployed.",
+      highlights: [
+        "Custom trip planner that finds both the fastest route and the one with fewest transfers, not just a single \"best\" option",
+        "Live map covering all 8 CTA rail lines, with trains that move smoothly between updates instead of jumping",
+        "One shared backend call serves every user, keeping the app inside CTA's 100,000-requests-a-day limit no matter how many people use it",
+        "800+ automated tests (316 backend, ~500 mobile) catch bugs before they reach the app",
+        "API keys are hashed and every request is rate-limited — no plaintext secrets, no open endpoints",
+      ],
+      architectureHighlights: [
+        "Trip Planning: A custom routing engine built on Chicago's official train schedule (269,000+ scheduled stops across 8 lines)",
+        "Smart Caching: The backend checks CTA once and shares that answer with every user, instead of every phone calling CTA directly",
+        "Security: Rate limiting and hashed API keys keep the app safe without needing user accounts",
+        "Testing: 800+ automated tests across an ~24,000-line, 296-file codebase",
+        "Deployment: Costed and ready to launch on Render + a free-tier Postgres database for about $7/month",
+      ],
+      techCategories: {
+        "Backend": ["Java 21", "Spring Boot 3.4.2", "Spring WebFlux/MVC", "Flyway"],
+        "Mobile": ["TypeScript", "React Native 0.86", "Expo SDK 57", "MapLibre"],
+        "Caching & Security": ["Caffeine", "Bucket4j", "SHA-256 Key Hashing"],
+        "Testing": ["JUnit 5", "ArchUnit", "Jest"],
+        "Infra": ["PostgreSQL", "Docker", "GitHub Actions", "Render + Neon"],
+      },
+    },
+  },
   {
     id: "logistics-platform",
     title: "Logistics Platform — Multi-Courier Logistics Aggregator",
@@ -563,6 +622,42 @@ const projects = [
 ];
 
 const liveProjects = [
+  {
+    id: "chitransit",
+    title: "ChiTransit",
+    tagline: "Chicago 'L' Transit Companion",
+    description:
+      "A Chicago 'L' transit app with a live train map, real-time arrivals, and a smart trip planner — backed by a Spring Boot API built around CTA's data limits.",
+    image: "/images/chitransit-map.png",
+    screenshots: [
+      "/images/chitransit-map.png",
+      "/images/chitransit-train-detail.png",
+      "/images/chitransit-arrivals.png",
+    ],
+    tags: ["Spring Boot", "React Native", "Expo", "PostgreSQL", "Trip Planner", "MapLibre"],
+    links: [
+      { label: "Live App (Coming Soon)", url: "https://chitransit.example.com", icon: "globe" },
+    ],
+    featured: false,
+    projectRef: "chitransit",
+    type: "personal",
+    details: {
+      overview:
+        "A Spring Boot API caches and cleans up CTA's live train data, and an Expo/React Native app shows a live map, real-time arrivals, and a trip planner. The link above is a placeholder — the app isn't deployed publicly yet, but it's feature-complete and tested on Android: 167 commits, ~24,000 lines of code, 800+ tests.",
+      highlights: [
+        "Custom trip planner over Chicago's full train schedule — 269,000+ scheduled stops across 8 lines",
+        "One shared backend call serves every user, built around CTA's 100,000-requests-a-day limit",
+        "Live map with animated trains and all 8 CTA rail lines",
+        "800+ automated tests across backend and mobile",
+        "Hashed API keys and rate limiting — no plaintext secrets, no open endpoints",
+      ],
+      techCategories: {
+        "Backend": ["Java 21", "Spring Boot", "PostgreSQL"],
+        "Mobile": ["React Native", "Expo", "MapLibre"],
+        "Infra": ["Docker", "GitHub Actions"],
+      },
+    },
+  },
   {
     id: "logistics-platform",
     title: "Logistics Platform",
