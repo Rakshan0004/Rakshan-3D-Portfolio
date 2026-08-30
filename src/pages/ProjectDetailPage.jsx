@@ -134,68 +134,37 @@ const ProjectDetailPage = () => {
 
       <div ref={heroRef} className="max-w-6xl mx-auto px-5 md:px-10">
         {/* Hero Section */}
-        {project.heroFit === "portrait" ? (
-          <div className="mb-10">
-            <div className="mx-auto w-[220px] sm:w-[260px] md:w-[300px] aspect-[349/715] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-contain bg-black"
-              />
-            </div>
-            <div className="text-center mt-6">
-              <div className="flex flex-wrap items-center justify-center gap-3 mb-3">
-                <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${badge.color}`}>
-                  {badge.label}
-                </span>
-                {project.demoUrl && (
-                  <span className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-                    </span>
-                    Live
-                  </span>
-                )}
-              </div>
-              <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold text-white leading-tight">
-                {project.title}
-              </h1>
-            </div>
+        <div className="relative rounded-2xl overflow-hidden border border-white/10 mb-10">
+          <div className="relative aspect-video max-h-[400px] md:max-h-[480px]">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
           </div>
-        ) : (
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 mb-10">
-            <div className="relative aspect-video max-h-[400px] md:max-h-[480px]">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover object-top"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-            </div>
 
-            {/* Title overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${badge.color}`}>
-                  {badge.label}
-                </span>
-                {project.demoUrl && (
-                  <span className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-                    </span>
-                    Live
+          {/* Title overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+              <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${badge.color}`}>
+                {badge.label}
+              </span>
+              {project.demoUrl && (
+                <span className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
                   </span>
-                )}
-              </div>
-              <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold text-white leading-tight">
-                {project.title}
-              </h1>
+                  Live
+                </span>
+              )}
             </div>
+            <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold text-white leading-tight">
+              {project.title}
+            </h1>
           </div>
-        )}
+        </div>
 
         {/* Content */}
         <div ref={contentRef} className="space-y-10">
